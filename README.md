@@ -11,7 +11,7 @@ The steps here are
 1. Learn yourself a minimal amount of c++ [1]
 2. Checkout and compile pdfium [2]
 3. Import pdfium into a small c++ application. (main.cc) [6]
-4. Create a class in c++ that performs the operation we need [6]
+4. Create a class in c++ that performs the operation we need [1][6]
 5. Read up on cgo and how to glue c++ and go together. [3][4]
 6. Create a go libary that binds to the c++ class [5][6]
 
