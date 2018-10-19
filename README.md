@@ -1,4 +1,4 @@
-# ssn-pdf-renderkit
+# ssn-pdfium-bridge
 
 # The project
 
