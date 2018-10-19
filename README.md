@@ -17,7 +17,7 @@ The steps here are
 
 Resources
 
-[0] https://community.alfresco.com/community/ecm/blog/2018/05/16/pdf-rendering-engine-performance-and-fidelity-comparison   
+[0] https://tinyurl.com/yd5fb2rz   
 [1] https://developers.google.com/edu/c++/   
 [2] https://pdfium.googlesource.com/pdfium/+/HEAD/docs/getting-started.md   
 [3] https://karthikkaranth.me/blog/calling-c-code-from-go/   
