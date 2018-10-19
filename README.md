@@ -1,4 +1,4 @@
-# ssn-pdfium-bridge
+# go-pdfium-render
 
 # The project
 
