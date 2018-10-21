@@ -23,3 +23,8 @@ Resources
 [4] https://github.com/arrieta/golang-cpp-basic-example   
 [5] https://groups.google.com/forum/#!topic/pdfium/r6KCGo6q7Fo   
 [6] https://github.com/cgilling/build-pdfium   
+
+
+Misc
+Just found up to date binaries for pdfium.
+https://github.com/bblanchon/pdfium-binaries
