@@ -1,8 +1,10 @@
 # go-pdfium-render
 
+https://github.com/bblanchon/pdfium-binaries needs to be present on your system.
+
 # The project
 
-The end goal is to have a golang libary that uses pdfium for rendering pdfs into images ppm(especially pgm) and png, everything shuld happen in memory.
+The end goal is to have a golang libary that uses pdfium for rendering pdfs into images ppm(especially pgm) and png, everything should happen in memory.
 
 Why pdfium? Because tt is the best in class and because it has a BSD style license, also there will be continued development on pdfium as long as chrome is around. [0]
 
