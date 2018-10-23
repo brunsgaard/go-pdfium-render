@@ -1,6 +1,22 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include <fpdfview.h>
+
+
+FPDF_DOCUMENT create_document(){
+  FPDF_DOCUMENT doc;
+  doc = (FPDF_DOCUMENT)malloc(sizeof(FPDF_DOCUMENT));
+  doc = FPDF_LoadDocument("in.pdf", NULL);
+  //FPDF_CloseDocument(doc);
+  
+  return doc;
+}
+
+void free_document(FPDF_DOCUMENT *doc)
+{
+  free(doc);
+}
 
 int main(int argc, char **argv)
 {
