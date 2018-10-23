@@ -6,7 +6,7 @@ Why pdfium? Because tt is the best in class and because it has a BSD style licen
 
 ### Install
 
-[pdfium-binaries](https://github.com/bblanchon/pdfium-binaries) needs to be present on your system and [pkg-config](https://en.wikipedia.org/wiki/Pkg-config) should be able to find it.
+[Pdfium binaries](https://github.com/bblanchon/pdfium-binaries) needs to be present on your system and [pkg-config](https://en.wikipedia.org/wiki/Pkg-config) should be able to find it.
 
 I wrote my own .pc file.
 
