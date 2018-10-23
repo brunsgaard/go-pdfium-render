@@ -2,6 +2,23 @@
 
 https://github.com/bblanchon/pdfium-binaries needs to be present on your system.
 
+```
+prefix=/opt/pdfium
+libdir=/opt/pdfium/lib
+includedir=/opt/pdfium/include
+
+Name: pdfium
+Description: pdfium
+Version: 3580
+Requires:
+
+Libs: -L${libdir} -lpdfium
+Cflags: -I${includedir}
+```
+
+I wrote my own .pc file.
+
+
 ### The project
 
 The end goal is to have a golang libary that uses pdfium for rendering pdfs into images ppm(especially pgm) and png, everything should happen in memory.
