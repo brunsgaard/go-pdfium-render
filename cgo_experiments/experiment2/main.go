@@ -78,9 +78,9 @@ func (d *Document) CloseDocument() {
 }
 
 // RenderPage shoud have docs
-func (d *Document) RenderPage(i int) *image.RGBA {
+func (d *Document) RenderPage(i int, dpi int) *image.RGBA {
 	page := C.FPDF_LoadPage(d.doc, C.int(i))
-	scale := 300 / 72
+	scale := dpi / 72.0
 	width := C.int(C.FPDF_GetPageWidth(page) * C.double(scale))
 	height := C.int(C.FPDF_GetPageHeight(page) * C.double(scale))
 	alpha := C.FPDFPage_HasTransparency(page)
@@ -92,12 +92,12 @@ func (d *Document) RenderPage(i int) *image.RGBA {
 	C.FPDFBitmap_FillRect(bitmap, 0, 0, width, height, C.ulong(fillColor))
 	C.FPDF_RenderPageBitmap(bitmap, page, 0, 0, width, height, 0,
 		C.FPDF_ANNOT)
-	println(int(C.FPDFBitmap_GetFormat(bitmap)))
+	// println(int(C.FPDFBitmap_GetFormat(bitmap)))
 	p := C.FPDFBitmap_GetBuffer(bitmap)
 	img := image.NewRGBA(image.Rect(0, 0, int(width), int(height)))
 	img.Stride = int(C.FPDFBitmap_GetStride(bitmap))
-	println(img.Stride)
-	println(int(width * 4))
+	// println(img.Stride)
+
 	bgra := make([]byte, 4)
 	for y := 0; y < int(height); y++ {
 		for x := 0; x < int(width); x++ {
@@ -119,12 +119,12 @@ func (d *Document) RenderPage(i int) *image.RGBA {
 
 func main() {
 
-	data, _ := ioutil.ReadFile("out.png")
+	data, _ := ioutil.ReadFile("in.pdf")
 	C.FPDF_InitLibrary()
 	d, err := NewDocument(&data)
 	if err == nil {
 		d.GetPageCount()
-		d.RenderPage(0)
+		d.RenderPage(0, 300)
 		d.CloseDocument()
 	}
 	C.FPDF_DestroyLibrary()
