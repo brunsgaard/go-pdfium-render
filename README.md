@@ -1,6 +1,8 @@
 # go-pdfium-render
 
-https://github.com/bblanchon/pdfium-binaries needs to be present on your system.
+https://github.com/bblanchon/pdfium-binaries needs to be present on your system and pkg-config should be able to find it.
+
+I wrote my own .pc file.
 
 ```
 prefix=/opt/pdfium
@@ -16,7 +18,7 @@ Libs: -L${libdir} -lpdfium
 Cflags: -I${includedir}
 ```
 
-I wrote my own .pc file.
+
 
 
 ### The project
