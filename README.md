@@ -1,8 +1,6 @@
 # go-pdfium-render
 
-### It should be simple to render a PDF, it is not
-
-A golang libary that binds to pdfium for rendering pdfs into images.
+A golang libary that uses to cgo/pdfium to render pdfs to images.
 
 Why pdfium? Because tt is the best in class and because it has a BSD style license, also there will be continued development on pdfium as long as chrome is around. [0]
 
