@@ -10,7 +10,7 @@ Why pdfium? Because tt is the best in class and because it has a BSD style licen
 
 ### Resources
 
-[0] https://tinyurl.com/yd5fb2rz
+[0] https://tinyurl.com/yd5fb2rz   
 [2] https://pdfium.googlesource.com/pdfium/+/HEAD/docs/getting-started.md   
 [3] https://karthikkaranth.me/blog/calling-c-code-from-go/   
 [4] https://github.com/arrieta/golang-cpp-basic-example   
@@ -18,4 +18,4 @@ Why pdfium? Because tt is the best in class and because it has a BSD style licen
 [6] https://github.com/cgilling/build-pdfium   
 [7] http://cdn01.foxitsoftware.com/pub/foxit/manual/enu/FoxitPDF_SDK20_Guide.pdf   
 [8] https://github.com/bblanchon/pdfium-binaries   
-[9] https://github.com/libvips/libvips/blob/3d249924a53fc667361a51b33fa684038e170466/libvips/foreign/pdfload_pdfium.c   
+[9] https://tinyurl.com/y8s3aen5   (libvips)     
