@@ -1,6 +1,6 @@
 # go-pdfium-render
 
-### The project (It should be simple to render a PDF, it is not)
+### It should be simple to render a PDF, it is not
 
 A golang libary that binds to pdfium for rendering pdfs into images.
 
