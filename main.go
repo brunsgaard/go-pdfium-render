@@ -1,20 +1,10 @@
 package main
 
-/*
-#cgo CFLAGS: -I/Users/brunsgaard/code/pdfiumleg/deps/pdfium/include
-#cgo LDFLAGS: -L/Users/brunsgaard/code/pdfiumleg/deps/pdfium/lib -lpdfium
-#include "fpdfview.h"
-#include "fpdf_annot.h"
-#include "fpdf_attachment.h"
-#include "fpdf_dataavail.h"
-#include "fpdf_edit.h"
-#include "fpdf_ext.h"
-#include "fpdf_formfill.h"
-#include "fpdf_progressive.h"
-#include "fpdf_structtree.h"
-#include "fpdf_text.h"
-#include "fpdfview.h"
-*/
+// #cgo pkg-config: pdfium
+// #include "fpdfview.h"
+// #include "fpdf_annot.h"
+// #include "fpdf_edit.h"
+// #include "fpdf_structtree.h"
 import "C"
 
 import (
@@ -41,7 +31,6 @@ func NewDocument(data *[]byte) (*Document, error) {
 		nil)
 	if doc == nil {
 		defer C.FPDF_CloseDocument(doc)
-
 		errorcase := C.FPDF_GetLastError()
 		switch errorcase {
 		case C.FPDF_ERR_SUCCESS:
@@ -90,13 +79,11 @@ func (d *Document) RenderPage(i int, dpi int) *image.RGBA {
 		fillColor = 0
 	}
 	C.FPDFBitmap_FillRect(bitmap, 0, 0, width, height, C.ulong(fillColor))
-	C.FPDF_RenderPageBitmap(bitmap, page, 0, 0, width, height, 0,
-		C.FPDF_ANNOT)
-	// println(int(C.FPDFBitmap_GetFormat(bitmap)))
+	C.FPDF_RenderPageBitmap(bitmap, page, 0, 0, width, height, 0, C.FPDF_ANNOT)
+
 	p := C.FPDFBitmap_GetBuffer(bitmap)
 	img := image.NewRGBA(image.Rect(0, 0, int(width), int(height)))
 	img.Stride = int(C.FPDFBitmap_GetStride(bitmap))
-	// println(img.Stride)
 
 	bgra := make([]byte, 4)
 	for y := 0; y < int(height); y++ {
@@ -105,27 +92,35 @@ func (d *Document) RenderPage(i int, dpi int) *image.RGBA {
 				bgra[i] = *((*byte)(p))
 				p = unsafe.Pointer(uintptr(p) + 1)
 			}
-			img.SetRGBA(x, y, color.RGBA{B: bgra[0], G: bgra[1], R: bgra[2], A: bgra[3]})
-
+			img.SetRGBA(
+				x, y,
+				color.RGBA{
+					B: bgra[0],
+					G: bgra[1],
+					R: bgra[2],
+					A: bgra[3]})
 		}
 	}
 	C.FPDFBitmap_Destroy(bitmap)
 	C.FPDF_ClosePage(page)
-	f, _ := os.OpenFile("out.png", os.O_WRONLY|os.O_CREATE, 0600)
-	defer f.Close()
-	png.Encode(f, img)
 	return img
 }
 
 func main() {
-
-	data, _ := ioutil.ReadFile("in.pdf")
+	data, _ := ioutil.ReadFile(os.Args[1])
+	//FPDF_InitLibraryWithConfig should be available
 	C.FPDF_InitLibrary()
 	d, err := NewDocument(&data)
-	if err == nil {
+	if err != nil {
+		println(err)
+	} else {
 		d.GetPageCount()
-		d.RenderPage(0, 300)
+		img := d.RenderPage(0, 300)
 		d.CloseDocument()
+		f, _ := os.OpenFile("out.png", os.O_WRONLY|os.O_CREATE, 0600)
+		defer f.Close()
+		png.Encode(f, img)
 	}
+
 	C.FPDF_DestroyLibrary()
 }
