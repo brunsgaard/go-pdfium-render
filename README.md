@@ -2,7 +2,7 @@
 
 A golang libary that uses to cgo/pdfium to render pdfs to images.
 
-Why pdfium? Because tt is the best in class and because it has a BSD style license, also there will be continued development on pdfium as long as chrome is around. [0]
+Why pdfium? Because it is the best in class and because it has a BSD style license, also there will be continued development on pdfium as long as chrome is around. [0]
 
 ### Install
 
